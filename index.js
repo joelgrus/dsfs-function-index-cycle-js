@@ -14,24 +14,14 @@ function intent(DOM) {
 }
 
 /**
- * Given a query, return a function that is true for indexEntries whose
- * name matches the query.
- */
-function matchesQuery(query) {
-  return function(indexEntry) {
-    return indexEntry.name.indexOf(query) !== -1;
-  }
-}
-
-/**
  * Given the observable of values (of the query filter text input),
  * return the state$, which consists of both the query itself and
  * the list of entries that satisfy the query.
  */
 function model(value$) {
-  return value$.map(q => ({
-    query : q,
-    entries : indexEntries.filter(matchesQuery(q))
+  return value$.map(query => ({
+    query,
+    entries : indexEntries.filter(entry => (entry.name.indexOf(query) !== -1))
   }));
 }
 
