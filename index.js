@@ -48,7 +48,7 @@ function showEntries(indexEntries) {
       ])
     ]),
     tbody(indexEntries.map(entry =>
-      tr({key : entry.name }, [
+      tr([
         td('' + entry.chapter),
         td('' + entry.page),
         td(entry.name)
