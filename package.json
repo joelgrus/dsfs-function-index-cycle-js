@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/.bin/browserify index.js -o function-index.js -t [ babelify --presets [ es2015 ] ]"
+    "build": "node_modules/.bin/browserify index.js -t [ babelify --presets [ es2015 ] ] | node_modules/.bin/uglifyjs > function-index.js"
   },
   "author": "",
   "license": "BSD-2-Clause",
@@ -21,9 +21,8 @@
     "browserify": "^12.0.1",
     "install": "^0.4.1",
     "npm": "^3.5.2",
-    "rx": "^4.0.7"
-  },
-  "dependencies": {
+    "rx": "^4.0.7",
+    "uglify-js": "^2.6.1",
     "@cycle/core": "^6.0.0",
     "@cycle/dom": "^9.0.1",
     "rx": "^4.0.7"
