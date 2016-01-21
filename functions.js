@@ -1,3 +1,7 @@
+/**
+ * File that contains the actual function index data.
+ */
+
 const raw = [
   [4,50,'vector_add'],
   [4,51,'vector_subtract'],
@@ -239,6 +243,7 @@ const raw = [
   [24,295,'matrix_multiply_reducer']
 ];
 
+// Export the index entries as objects.
 export const indexEntries = raw.map(row => ({
   chapter: row[0],
   page: row[1],

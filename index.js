@@ -13,12 +13,21 @@ function intent(DOM) {
     .startWith('');
 }
 
+/**
+ * Given a query, return a function that is true for indexEntries whose
+ * name matches the query.
+ */
 function matchesQuery(query) {
   return function(indexEntry) {
     return indexEntry.name.indexOf(query) !== -1;
   }
 }
 
+/**
+ * Given the observable of values (of the query filter text input),
+ * return the state$, which consists of both the query itself and
+ * the list of entries that satisfy the query.
+ */
 function model(value$) {
   return value$.map(q => ({
     query : q,
@@ -26,6 +35,9 @@ function model(value$) {
   }));
 }
 
+/**
+ * Render the given array of indexEntries as a table.
+ */
 function showEntries(indexEntries) {
   return table([
     thead([
@@ -36,7 +48,7 @@ function showEntries(indexEntries) {
       ])
     ]),
     tbody(indexEntries.map(entry =>
-      tr([
+      tr({key : entry.name }, [
         td('' + entry.chapter),
         td('' + entry.page),
         td(entry.name)
@@ -45,6 +57,11 @@ function showEntries(indexEntries) {
   ]);
 }
 
+/**
+ * Given the state$ observable (again, consisting of the query and the index
+ * entries satisfying the query), return the virtual DOM representation of
+ * the corresponding page.
+ */
 function view(state$) {
   return state$.map(state =>
     div([
