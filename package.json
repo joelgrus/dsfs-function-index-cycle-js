@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dev": "node_modules/.bin/browserify index.js -t [ babelify --presets [ es2015 ] ] > function-index.js",
     "build": "node_modules/.bin/browserify index.js -t [ babelify --presets [ es2015 ] ] | node_modules/.bin/uglifyjs > function-index.js"
   },
   "author": "",
